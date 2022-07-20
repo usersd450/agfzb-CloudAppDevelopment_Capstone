@@ -6,6 +6,7 @@ from .models import CarDealer,CarMake,CarModel
 from .restapis import get_dealers_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf, get_request
 from datetime import datetime
 import logging
 import json
