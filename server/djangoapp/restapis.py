@@ -10,20 +10,25 @@ from requests.auth import HTTPBasicAuth
 def get_request(url, **kwargs):
     print(kwargs)
     print("GET from {} ".format(url))
-    try:
+    params=dict()
+    url = "https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/35d30edb-1d60-48b1-b4e6-0038733da2e7" 
+
+    api_key = "w8APs_00JkRjwOT6yDFF3543o_NWLoScZr2Tg5w4VuG8" 
+    if api_key:
         # Call get method of requests library with URL and parameters
         response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
                                     auth=HTTPBasicAuth('apikey', api_key))
-    except:
+    else:
+        response=request.get(url,params=params,auth=HTTPBasicAuth('apikey', api_key))
         
         # If any error occurs
-        print("Network exception occurred")
-    status_code = response.status_code
-    print("With status {} ".format(status_code))
-    json_data = json.loads(response.text)
-    return json_data
+       
+    return response
 
 # Create a `post_request` to make HTTP POST requests
+def post_request(url,json_payload,**kwargs):
+    response=requests.post(url, params=kwargs, json=json_payload)
+    return response
 
 
 
